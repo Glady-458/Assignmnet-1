@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Update User information</title>
+  </head>
+  <body>
+    <table border="1">
+      <tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP MIN</th><th>WLTP MAX</th><th>Power</th><th>Cost</th></tr>
+      {% for e in a %}
+      <tr><td>{{e.key.id()}}</td><td>{{e.name}}</td><td>{{e.manufacturer}}</td><td>{{e.year}}</td><td>{{e.battery_size}}</td><td>{{e.WLTP_min}}</td><td>{{e.WLTP_max}}</td><td>{{e.power}}</td><td>{{e.cost}}</td>
+        {%endfor%}
+    </table>
+    <br/>
+    <fieldset>
+    <form method="post" action="/evadd">
+
+      ID:<input type="number" name="id2" value="{{ keyno }}" disabled/><br/>
+      Name:<input type="text" name="car_name" value="{{ ev.name }}"/>
+      <br/>
+      manufacturer:<input type="text" name="car_mfc" value="{{ ev.manufacturer }}"/>
+      <br/>
+      Year:<input type="number" name="car_year" value="{{ ev.year }}"/>
+      <br/>
+      Battery Size:<input type="number" name="car_btr_sz" value="{{ ev.battery_size }}"/>
+      <br/>
+      WLTP Min:<input type="number" name="car_WLTPMIN" value="{{ ev.WLTP_min }}"/>
+      <br/>
+      WLTP Max:<input type="number" name="car_WLTPMAX" value="{{ ev.WLTP_max }}"/>
+      <br/>
+      Power:<input type="number" name="car_power" value="{{ ev.power }}"/>
+      <br/>
+      Cost:<input type="number" name="car_cost" value="{{ ev.cost }}"/>
+      <br/>
+      <input type="submit" value="add" name="button"/>
+      <input type="submit" value="Cancel" name="button"/>
+ </form>
+</fieldset>
+  </body>
+</html>

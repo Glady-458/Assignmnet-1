@@ -7,12 +7,12 @@ import os
 from datastore import MyUser
 from datastore import ElecVel
 from edit import Edit
+from evadd import EvAdd
 
 JINJA_ENVIRONMENT = jinja2.Environment(
 	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
 	extensions=['jinja2.ext.autoescape'],
 	autoescape=True)
-
 class MainPage(webapp2.RequestHandler):
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
@@ -58,4 +58,5 @@ class MainPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 ('/', MainPage),
 ('/edit', Edit),
+('/evadd', EvAdd),
 ], debug=True)
