@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>{{ car.name }}</h1>
+    Name : {{ car.manufacturer }}<br/>
+    Year : {{ car.year }}<br/>
+    Battery : {{ car.battery_size }}<br/>
+    WLTP Range : {{ car.wltp_range }}<br/>
+    Cost : {{ car.cost }}<br/>
+    Power : {{ car.power }}<br/>
+    Average Rating : {{ avg_rating }}
+    <br/>
+<a href='/'><input type="button" Name="login" value="Home"></a>
+{% for review in reviews %}
+  <fieldset>
+    <h3>{{ review.car_name }}</h3>
+    Review : {{ review.car_review }}<br/>
+    Rating : {{ review.rating }}<br/>
+    By : {{ review.user }}<br/>
+  </fieldset>
+    {%endfor%}
+  </body>
+</html>

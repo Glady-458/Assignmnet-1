@@ -22,15 +22,11 @@
 		<p>Hello guest welcome to the application</p>
 		{% endif %}
 		<p>you can {{ url_string }} <a href='{{ url }}'><input type="button" Name="login" value="here"></a></p>
-		{% for review in reviews %}
-		    <fieldset>
-		      <h3>{{ review.car_name }}</h3><br/>
-		      Review : {{ review.car_review }}<br/>
-		      Rating : {{ review.rating }}<br/>
-		      By : {{ review.user }}<br/>
-		    </fieldset>
-
-		{% endfor %}
-		</fieldset>
+		<table border="1">
+			<tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP Range</th><th>Power</th><th>Cost</th></tr>
+			{% for e in ev %}
+			<tr><td>{{e.key.id()}}</td><td><a href="/evdetail?car={{ e.key.id() }}">{{ e.name }}</a></td><td>{{e.manufacturer}}</td><td>{{e.year}}</td><td>{{e.battery_size}}</td><td>{{e.WLTP}}</td><td>{{e.power}}</td><td>{{e.cost}}</td>
+				{%endfor%}
+		</table>
 	</body>
 </html>
