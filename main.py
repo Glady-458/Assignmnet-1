@@ -10,6 +10,7 @@ from edit import Edit
 from evadd import EvAdd
 from evsearch import EVSearch
 from evdetail import EvDetail
+from evcompare import EvCompare
 
 JINJA_ENVIRONMENT = jinja2.Environment(
 	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -62,5 +63,6 @@ app = webapp2.WSGIApplication([
 ('/edit', Edit),
 ('/evadd', EvAdd),
 ('/evsearch', EVSearch),
-('/evdetail', EvDetail)
+('/evdetail', EvDetail),
+('/evcompare', EvCompare)
 ], debug=True)

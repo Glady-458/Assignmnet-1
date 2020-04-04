@@ -39,9 +39,11 @@ class EvAdd(webapp2.RequestHandler):
 		#ev = None
 		#keyno = date+int(user.user_id())-185804765802701624389
 		if user:
+			if self.request.get('button')=='Cancel':
+				self.redirect('/')
 			#185804765802701624389  111111111111111111111
 			# name, manufacturer, year, battery size (Kwh), WLTP range (Km), cost, power (Kw).
-			if self.request.get('button') == 'add':
+			elif self.request.get('button') == 'add':
 				id = int(self.request.get('ID'))
 				ev = ElecVel(id=id)
 				ev.name = self.request.get('car_name')
@@ -59,7 +61,9 @@ class EvAdd(webapp2.RequestHandler):
 					self.redirect('/evadd')
 
 				else:
-					self.redirect('/evadd')
-
-			elif self.request.get('button')=='Cancel':
-				self.redirect('/')
+					template = JINJA_ENVIRONMENT.get_template("error.html")
+	                template_values = {
+	                "error" : "Vehicle already exist!" ,
+	                "url" : "evadd"
+	                }
+	                self.response.write(template.render(template_values))

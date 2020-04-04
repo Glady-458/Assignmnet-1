@@ -13,6 +13,14 @@ class ElecVel(ndb.Model):
 	WLTP = ndb.FloatProperty()
 	cost = ndb.FloatProperty()
 	power = ndb.FloatProperty()
+class EvReview(ndb.Model):
+	user = ndb.StringProperty()
+	car = ndb.IntegerProperty()
+	car_name = ndb.StringProperty()
+	car_review = ndb.StringProperty()
+	rating = ndb.IntegerProperty()
+	date = ndb.DateTimeProperty()
+
 
 
 # name, manufacturer, year, battery size (Kwh), WLTP range (Km), cost, power (Kw).

@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>Compare Cars</title>
+  </head>
+  <body>
+    <h2>Compare</h2>
+      <form method="post" action="/evcompare">
+        <p>Car1 : <select name="car1">
+            <option value="" default>Select a car</option>
+            {% for car in ev %}
+                <option value="{{ car.key.id() }}">{{ car.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p>Car2 : <select name="car2">
+            <option value="" default>Select a car</option>
+            {% for car in ev %}
+                <option value="{{ car.key.id() }}">{{ car.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <input type="submit" value="Compare" name="button">
+    <input type="submit" value="Cancel" name="button">
+</form>
+{% if car1 and car2 %}
+    <table border=1>
+        <tr>
+            <th>Data</th>
+            <th><a href="/evdetail?car={{ car1.key.id() }}">{{ car1.name }}</a></th>
+            <th><a href="/evdetail?car={{ car2.key.id() }}">{{ car2.name }}</a></th>
+        </tr>
+        <tr>
+            <td>manufacturer</td>
+            <td>{{ car1.manufacturer }}</td>
+            <td>{{ car2.manufacturer }}</td>
+        </tr>
+        <tr>
+            <td>year</td>
+            {% if car1.year > car2.year %}
+            <td style="background: green;">{{ car1.year }}</td>
+            <td style="background: red;">{{ car2.year }}</td>
+            {% elif car2.year > car1.year %}
+            <td style="background: red;">{{ car1.year }}</td>
+            <td style="background: green;">{{ car2.year }}</td>
+            {% else %}
+            <td>{{ car1.year }}</td>
+            <td>{{ car2.year }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>battery_size</td>
+            {% if car1.battery_size > car2.battery_size %}
+            <td style="background: green;">{{ car1.battery_size }}</td>
+            <td style="background: red;">{{ car2.battery_size }}</td>
+            {% elif car2.battery_size > car1.battery_size %}
+            <td style="background: red;">{{ car1.battery_size }}</td>
+            <td style="background: green;">{{ car2.battery_size }}</td>
+            {% else %}
+            <td>{{ car1.battery_size }}</td>
+            <td>{{ car2.battery_size }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>wltp_range</td>
+            {% if car1.WLTP > car2.WLTP %}
+            <td style="background: green;">{{ car1.WLTP }}</td>
+            <td style="background: red;">{{ car2.WLTP }}</td>
+            {% elif car2.WLTP > car1.WLTP %}
+            <td style="background: red;">{{ car1.WLTP }}</td>
+            <td style="background: green;">{{ car2.WLTP }}</td>
+            {% else %}
+            <td>{{ car1.WLTP }}</td>
+            <td>{{ car2.WLTP }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>cost</td>
+            {% if car2.cost > car1.cost %}
+            <td style="background: green;">{{ car1.cost }}</td>
+            <td style="background: red;">{{ car2.cost }}</td>
+            {% elif car1.cost > car2.cost %}
+            <td style="background: red;">{{ car1.cost }}</td>
+            <td style="background: green;">{{ car2.cost }}</td>
+            {% else %}
+            <td>{{ car1.cost }}</td>
+            <td>{{ car2.cost }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>power</td>
+            {% if car1.power > car2.power %}
+            <td style="background: green;">{{ car1.power }}</td>
+            <td style="background: red;">{{ car2.power }}</td>
+            {% elif car2.power > car1.power %}
+            <td style="background: red;">{{ car1.power }}</td>
+            <td style="background: green;">{{ car2.power }}</td>
+            {% else %}
+            <td>{{ car1.power }}</td>
+            <td>{{ car2.power }}</td>
+            {% endif %}
+        </tr>
+    </table>
+    {% endif %}
+  </body>
+</html>

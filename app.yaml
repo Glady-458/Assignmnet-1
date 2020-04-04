@@ -9,3 +9,6 @@ libraries:
 handlers:
   - url: /.*
     script: main.app
+    
+  - url: /stylesheet
+    static_dir: stylesheet
