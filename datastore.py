@@ -10,8 +10,7 @@ class ElecVel(ndb.Model):
 	manufacturer = ndb.StringProperty()
 	year = ndb.IntegerProperty()
 	battery_size = ndb.FloatProperty()
-	WLTP_min = ndb.FloatProperty()
-	WLTP_max = ndb.FloatProperty()
+	WLTP = ndb.FloatProperty()
 	cost = ndb.FloatProperty()
 	power = ndb.FloatProperty()
 

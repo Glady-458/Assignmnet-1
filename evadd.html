@@ -5,34 +5,34 @@
   </head>
   <body>
     <table border="1">
-      <tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP MIN</th><th>WLTP MAX</th><th>Power</th><th>Cost</th></tr>
+      <tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP Range</th><th>Power</th><th>Cost</th></tr>
       {% for e in a %}
-      <tr><td>{{e.key.id()}}</td><td>{{e.name}}</td><td>{{e.manufacturer}}</td><td>{{e.year}}</td><td>{{e.battery_size}}</td><td>{{e.WLTP_min}}</td><td>{{e.WLTP_max}}</td><td>{{e.power}}</td><td>{{e.cost}}</td>
+      <tr><td>{{e.key.id()}}</td><td>{{e.name}}</td><td>{{e.manufacturer}}</td><td>{{e.year}}</td><td>{{e.battery_size}}</td><td>{{e.WLTP}}</td><td>{{e.power}}</td><td>{{e.cost}}</td>
         {%endfor%}
     </table>
     <br/>
     <fieldset>
     <form method="post" action="/evadd">
 
-      ID:<input type="number" name="id2" value="{{ keyno }}" disabled/><br/>
-      Name:<input type="text" name="car_name" value="{{ ev.name }}"/>
+      <input type="number" name="ID" value="{{ keyno }}" hidden/><br/>
+      ID:<input type="number" name="ID2" value="{{ keyno }}" disabled/><br/>
+      Name:<input type="text" name="car_name" value="{{ ev.name }}" placeholder="Car Name"/>
       <br/>
-      manufacturer:<input type="text" name="car_mfc" value="{{ ev.manufacturer }}"/>
+      manufacturer:<input type="text" name="car_mfc" value="{{ ev.manufacturer }}" placeholder="Car Manufacturer" />
       <br/>
-      Year:<input type="number" name="car_year" value="{{ ev.year }}"/>
+      Year:<input type="number" name="car_year" value="{{ ev.year }}" placeholder="Year of Manufacture" min="1800" max="2999"/>
       <br/>
-      Battery Size:<input type="number" name="car_btr_sz" value="{{ ev.battery_size }}"/>
+      Battery Size:<input type="number" name="car_btr_sz" value="{{ ev.battery_size }}" placeholder="Battery Size"/>
       <br/>
-      WLTP Min:<input type="number" name="car_WLTPMIN" value="{{ ev.WLTP_min }}"/>
+      WLTP Range:<input type="number" name="car_WLTP" value="{{ ev.WLTP }}" placeholder="WLTP Range"/>
       <br/>
-      WLTP Max:<input type="number" name="car_WLTPMAX" value="{{ ev.WLTP_max }}"/>
+      Power:<input type="number" name="car_power" value="{{ ev.power }}" placeholder="Power"/>
       <br/>
-      Power:<input type="number" name="car_power" value="{{ ev.power }}"/>
-      <br/>
-      Cost:<input type="number" name="car_cost" value="{{ ev.cost }}"/>
+      Cost:<input type="number" name="car_cost" value="{{ ev.cost }}" placeholder="Cost"/>
       <br/>
       <input type="submit" value="add" name="button"/>
       <input type="submit" value="Cancel" name="button"/>
+
  </form>
 </fieldset>
   </body>

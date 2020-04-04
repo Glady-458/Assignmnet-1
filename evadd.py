@@ -19,12 +19,12 @@ class EvAdd(webapp2.RequestHandler):
 		ev = ev_key.get()
 		table = ElecVel.query()
 		a = table.fetch()
-		keyno = int(time.time()*1000)+int(user.user_id())-112422317686957598863
+		keyno = int(time.time()*1000)+int(user.user_id())-18580476580402176403-167224289223619601419+99999999
 		template_values = {
 		'ev' : ev,
 		'a' : a,
 		'keyno' : keyno,
-		'table' : table
+		'table' : table,
 		}
 		template = JINJA_ENVIRONMENT.get_template('evadd.html')
 		self.response.write(template.render(template_values))
@@ -42,14 +42,13 @@ class EvAdd(webapp2.RequestHandler):
 			#185804765802701624389  111111111111111111111
 			# name, manufacturer, year, battery size (Kwh), WLTP range (Km), cost, power (Kw).
 			if self.request.get('button') == 'add':
-				#keyno = date+int(user.user_id())-185804765802701624389
-				ev = ElecVel(id=self.request.get('id2'))
+				id = int(self.request.get('ID'))
+				ev = ElecVel(id=id)
 				ev.name = self.request.get('car_name')
 				ev.manufacturer = self.request.get('car_mfc')
 				ev.year = int(self.request.get('car_year'))
 				ev.battery_size = float(self.request.get('car_btr_sz'))
-				ev.WLTP_min = float(self.request.get('car_WLTPMIN'))
-				ev.WLTP_max = float(self.request.get('car_WLTPMAX'))
+				ev.WLTP = float(self.request.get('car_WLTP'))
 				ev.power = float(self.request.get('car_power'))
 				ev.cost = float(self.request.get('car_cost'))
 				#temp2 = ElecVel.name

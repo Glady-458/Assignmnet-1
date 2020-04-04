@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>boo</title>
+  </head>
+  <body>
+    <h1>Search Vehicle</h1>
+    <fieldset>
+      <form method="post" action="/evsearch">
+        Search <input type="text" name="vechSearch" placeholder="Search"/><br>
+        category <select name="category">
+               <option value="Year">year</option>
+               <option value="Battery">battery</option>
+               <option value="Wltp">wltp</option>
+               <option value="Cost">cost</option>
+               <option value="Power">power</option>
+           </select><br/>
+        Min <input type="text" name="min" placeholder="Minimum Value"/>
+        Min <input type="text" name="max" placeholder="Maximum Value"/><br/><br/>
+        <input type="submit" value="Search" name="button"/>
+        <input type="submit" value="Cancel" name="button"/>
+      </form>
+    </fieldset>
+<br/>
+    <table border = 1>
+      <tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP Range</th><th>Power</th><th>Cost</th></tr>
+        {% for car in cars %}
+      <tr><td>{{car.key.id()}}</td><td><a href ="/">{{car.name}}</a></td><td>{{car.manufacturer}}</td><td>{{car.year}}</td><td>{{car.battery_size}}</td><td>{{car.WLTP}}</td><td>{{car.power}}</td><td>{{car.cost}}</td>
+        {% endfor %}
+    </table>
+
+  </body>
+</html>
