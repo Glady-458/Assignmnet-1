@@ -99,6 +99,19 @@
             <td>{{ car2.power }}</td>
             {% endif %}
         </tr>
+        <tr>
+          <td>average rating</td>
+            {% if Car1_Avg > Car2_Avg %}
+            <td style="background: green;">{{ Car1_Avg }}</td>
+            <td style="background: red;">{{ Car2_Avg }}</td>
+            {% elif Car2_Avg > Car1_Avg %}
+            <td style="background: red;">{{ Car1_Avg }}</td>
+            <td style="background: green;">{{ Car2_Avg }}</td>
+            {% else %}
+            <td>{{ Car1_Avg }}</td>
+            <td>{{ Car2_Avg }}</td>
+            {% endif %}
+        </tr>
     </table>
     {% endif %}
   </body>
