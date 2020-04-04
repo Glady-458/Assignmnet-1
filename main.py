@@ -9,6 +9,7 @@ from datastore import ElecVel
 from edit import Edit
 from evadd import EvAdd
 from evsearch import EVSearch
+from evdetail import EvDetail
 
 JINJA_ENVIRONMENT = jinja2.Environment(
 	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -60,5 +61,6 @@ app = webapp2.WSGIApplication([
 ('/', MainPage),
 ('/edit', Edit),
 ('/evadd', EvAdd),
-('/evsearch', EVSearch)
+('/evsearch', EVSearch),
+('/evdetail', EvDetail)
 ], debug=True)

@@ -26,7 +26,7 @@
     <table border = 1>
       <tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP Range</th><th>Power</th><th>Cost</th></tr>
         {% for car in cars %}
-      <tr><td>{{car.key.id()}}</td><td><a href ="/">{{car.name}}</a></td><td>{{car.manufacturer}}</td><td>{{car.year}}</td><td>{{car.battery_size}}</td><td>{{car.WLTP}}</td><td>{{car.power}}</td><td>{{car.cost}}</td>
+      <tr><td>{{car.key.id()}}</td><td><a href ="/evdetail?car={{car.key.id()}}">{{car.name}}</a></td><td>{{car.manufacturer}}</td><td>{{car.year}}</td><td>{{car.battery_size}}</td><td>{{car.WLTP}}</td><td>{{car.power}}</td><td>{{car.cost}}</td>
         {% endfor %}
     </table>
 
