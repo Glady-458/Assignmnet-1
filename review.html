@@ -11,6 +11,7 @@
 
 
     <form method="post" action="/evreview">
+      <h3>Add Reviews</h3>
       Car :
             <select name="car">
             {% for cars in ev %}
@@ -29,6 +30,9 @@
         <input type="submit" value="Submit" name ="button">
 
     </form>
+    </fieldset>
+    <br/><br/><br/>
+    All reviews
 {% endif %}
 {% for review in reviews %}
     <fieldset>
@@ -39,6 +43,5 @@
     </fieldset>
 
 {% endfor %}
-</fieldset>
   </body>
 </html>
