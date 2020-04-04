@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Car Review</title>
+  </head>
+  <body>
+    <h1>Reviews</h1>
+{% if user %}
+<fieldset>
+
+
+    <form method="post" action="/evreview">
+      Car :
+            <select name="car">
+            {% for cars in ev %}
+                <option value="{{ cars.key.id() }}">{{ cars.name }}</option>
+            {% endfor %}
+            </select><br/><br/>
+      Feedback: <textarea maxlength="1000" name="review" required></textarea><br/>
+      Ratings: <input type="range" min="1" max="10" value ="1" name="rating" onchange="show_value(this.value);" required>
+      <script type="text/javascript">
+        function show_value(x)
+        {
+          document.getElementById("slider_value").innerHTML=x;
+        }
+      </script>
+      <span id="slider_value" style="color:red;"></span>
+        <input type="submit" value="Submit" name ="button">
+
+    </form>
+{% endif %}
+{% for review in reviews %}
+    <fieldset>
+      <h3>{{ review.car_name }}</h3><br/>
+      Review : {{ review.car_review }}<br/>
+      Rating : {{ review.rating }}<br/>
+      By : {{ review.user }}<br/>
+    </fieldset>
+
+{% endfor %}
+</fieldset>
+  </body>
+</html>

@@ -6,11 +6,13 @@ from google.appengine.ext import ndb
 import os
 from datastore import MyUser
 from datastore import ElecVel
+from datastore import EvReview
 from edit import Edit
 from evadd import EvAdd
 from evsearch import EVSearch
 from evdetail import EvDetail
 from evcompare import EvCompare
+from evreview import evReview
 
 JINJA_ENVIRONMENT = jinja2.Environment(
 	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -24,6 +26,7 @@ class MainPage(webapp2.RequestHandler):
 		welcome = 'Welcome back'
 		myuser = None
 		user = users.get_current_user()
+		reviews = EvReview.query().fetch()
 		if user:
 			url = users.create_logout_url(self.request.uri)
 			url_string = 'logout'
@@ -43,7 +46,8 @@ class MainPage(webapp2.RequestHandler):
 			'url_string' : url_string,
 			'user' : user,
 			'welcome' : welcome,
-			'myuser' : myuser
+			'myuser' : myuser,
+			"reviews" : reviews,
 		}
 		template = JINJA_ENVIRONMENT.get_template('main.html')
 		self.response.write(template.render(template_values))
@@ -64,5 +68,6 @@ app = webapp2.WSGIApplication([
 ('/evadd', EvAdd),
 ('/evsearch', EVSearch),
 ('/evdetail', EvDetail),
-('/evcompare', EvCompare)
+('/evcompare', EvCompare),
+('/evreview', evReview)
 ], debug=True)

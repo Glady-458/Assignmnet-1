@@ -62,8 +62,8 @@ class EvAdd(webapp2.RequestHandler):
 
 				else:
 					template = JINJA_ENVIRONMENT.get_template("error.html")
-	                template_values = {
-	                "error" : "Vehicle already exist!" ,
-	                "url" : "evadd"
-	                }
-	                self.response.write(template.render(template_values))
+					template_values = {
+	                	"error" : "Vehicle already exist!" ,
+	                	"url" : "evadd"
+						}
+					self.response.write(template.render(template_values))

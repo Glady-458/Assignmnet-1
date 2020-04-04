@@ -17,10 +17,20 @@
     To add Electric Vehicle information <a href="/evadd">click here</a><br/>
 		To search Electric Vehicle information <a href="/evsearch">click here</a><br/>
 		To search Compare Electric Vehicle <a href="/evcompare">click here</a><br/>
+		To add Reviews for Electric Vehicle <a href="/evreview">click here</a><br/>
 		{% else %}
 		<p>Hello guest welcome to the application</p>
 		{% endif %}
 		<p>you can {{ url_string }} <a href='{{ url }}'><input type="button" Name="login" value="here"></a></p>
+		{% for review in reviews %}
+		    <fieldset>
+		      <h3>{{ review.car_name }}</h3><br/>
+		      Review : {{ review.car_review }}<br/>
+		      Rating : {{ review.rating }}<br/>
+		      By : {{ review.user }}<br/>
+		    </fieldset>
 
+		{% endfor %}
+		</fieldset>
 	</body>
 </html>
