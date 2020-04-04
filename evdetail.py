@@ -15,13 +15,11 @@ class EvDetail(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
         user = users.get_current_user()
-
     	if user:
             myuser_key = ndb.Key('MyUser', user.user_id())
             myuser = myuser_key.get()
             key = self.request.get("car")
             car = ndb.Key(ElecVel,int(key)).get()
-            #template_values["car"] = car
         template_values={
         "car" : car
         }
