@@ -7,7 +7,7 @@
     <table border="1">
       <tr><th>Id</th><th>Name</th><th>Manufacturer</th><th>Year</th><th>Battery Size</th><th>WLTP Range</th><th>Power</th><th>Cost</th></tr>
       {% for e in a %}
-      <tr><td>{{e.key.id()}}</td><td>{{e.name}}</td><td>{{e.manufacturer}}</td><td>{{e.year}}</td><td>{{e.battery_size}}</td><td>{{e.WLTP}}</td><td>{{e.power}}</td><td>{{e.cost}}</td>
+      <tr><td>{{e.key.id()}}</td><td><a href ="/evedit?car={{e.key.id()}}">{{e.name}}</td><td>{{e.manufacturer}}</td><td>{{e.year}}</td><td>{{e.battery_size}}</td><td>{{e.WLTP}}</td><td>{{e.power}}</td><td>{{e.cost}}</td>
         {%endfor%}
     </table>
     <br/>
