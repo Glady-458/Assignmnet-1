@@ -31,6 +31,5 @@ class Edit(webapp2.RequestHandler):
 			myuser.age = int(self.request.get('users_age'))
 			myuser.email_address = user.email()
 			myuser.put()
-			self.redirect('/')
 		elif self.request.get('button') == 'Cancel':
 			self.redirect('/')
